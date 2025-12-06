@@ -1,0 +1,308 @@
+/* ===========================
+   VARIABLES DE COLOR
+=========================== */
+:root{
+    --azul:#0077ff;
+    --verde:#33db2a;
+    --fondo:#ffffff;
+    --texto:#222;
+}
+
+body.oscuro{
+    --fondo:#0d1117;
+    --texto:#e6e6e6;
+    --azul:#3399ff;
+    --verde:#7b00e6;
+}
+
+/* ===========================
+   BASE
+=========================== */
+body{
+    margin:0;
+    background:var(--fondo);
+    color:var(--texto);
+    font-family:Arial;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:var(--azul);
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+    z-index:99;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.modo-btn{
+    background:var(--verde);
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+    font-size:18px;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.hero{
+    padding-top:120px;
+    height:70vh;
+    background:linear-gradient(to right, var(--azul), var(--verde));
+    color:white;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.btn-primario{
+    padding:10px 20px;
+    background:var(--verde);
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* Animaciones */
+.animar{
+    animation: bajar 1.3s ease;
+}
+
+.animar2{
+    animation: fade 2s ease;
+}
+
+@keyframes bajar{
+    from{ transform:translateY(-40px); opacity:0; }
+    to{ transform:translateY(0); opacity:1; }
+}
+
+@keyframes fade{
+    from{ opacity:0; }
+    to{ opacity:1; }
+}
+
+/* ===========================
+   SECCIONES
+=========================== */
+section{
+    padding:70px 30px;
+    text-align:center;
+}
+
+/* ===========================
+   SERVICIOS
+=========================== */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:var(--fondo);
+    padding:20px;
+    border-radius:12px;
+    width:280px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.zoom:hover{
+    transform:scale(1.05);
+}
+
+/* ===========================
+   PORTAFOLIO
+=========================== */
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.item{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    height:220px;
+    background:#6065ff;
+    cursor:pointer;
+    transition: transform 0.3s ease;
+}
+
+.item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* TEXTO DEL HOVER */
+.item::after{
+    content: attr(data-text);
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    min-height:45%;
+    background:rgba(0, 0, 0, 0.6);
+    color:white; /* ← corregido */
+    padding:12px;
+    font-size:16px;
+    box-sizing:border-box;
+    opacity:0;
+    transition:0.3s;
+}
+
+.item:hover::after{
+    opacity:1;
+}
+
+/* ===========================
+   EQUIPO
+=========================== */
+
+.equipo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+/* Fondo adaptable modo claro / oscuro */
+.persona{
+    text-align:center;
+    background:rgba(255, 255, 255, 0.2);
+    border-radius:15px;
+    padding:15px;
+    backdrop-filter:blur(4px);
+}
+
+body.oscuro .persona{
+    background:rgba(0,0,0,0.3);
+}
+
+.persona img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:10px;
+    border:3px solid var(--texto); /* ← borde que cambia con el modo */
+}
+
+.persona h3{
+    color:var(--texto);
+}
+
+.persona p{
+    font-size:14px;
+    color:var(--texto); /* ← corregido */
+    margin-top:5px;
+}
+
+/* ===========================
+   CONTACTO
+=========================== */
+
+.contacto{
+    font-size:18px;
+}
+/* PORTAFOLIO */
+.portafolio-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.proyecto {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.proyecto img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Texto sobre la imagen */
+.proyecto .texto {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #000;
+}
+
+/* CHAT FALSO */
+#chat-falso {
+    width: 250px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    overflow: hidden;
+    font-family: Arial;
+}
+
+#chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#chat-body {
+    height: 150px;
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;
+}
+
+#chat-input {
+    border-top: 1px solid #ccc;
+    padding: 8px;
+}
+
+#chat-input input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+}
